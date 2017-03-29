@@ -10,26 +10,18 @@
 	{% if produto.aberto %}
 		<span><input type="checkbox" name="car"></span>		
 	{% endif %}
-	Nome: {{ produto.descricao }} - Preço {{ produto.preco }}</p>
-	{% if produto.ttamanho %}
-		<p>Tamanho: </p>
-		<select id="id_tamanho" name="tamanho">
-		{% for p in produto.TAMANHOS %}
-			<option value="1">{{ p }}</option>
-		{% endfor %}
-		</select>
+	{{ produto.descricao }} -
+	<select id="id_tipo{{ produto.pk }}" name="tipo">
+	{% for p in produto.get_precos %}
+		<option value="{{ p.pk }}">{{ p.descricao }}</option>
+	{% endfor %}
+	</select>
+	{% if produto.minimo_permitido %}
+		- Quantidade: 
+		<input id="id_preco{{ produto.pk }}" name="preco" step="any" type="number" value="{{ produto.minimo_permitido }}" required />
 	{% endif %}
-	{% if produto.ttipo %}
-		<p>Tipos: </p>
-		<select id="id_tipo" name="tipo">
-		{% for p in produto.CTIPOS %}
-			<option value="1">{{ p }}</option>
-		{% endfor %}
-		</select>
-	{% endif %}
-	
+	</p>	
 	<p>-----------------------------------------------</p>
-	<br>
 {% empty %}
 	<p>Sem produtos cadastrados</p>
 {% endfor %}
