@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SudesteColor</title>
+</head>
+<body>
+{% for produto in produtos %}
+	
+	<p>
+	{% if produto.aberto %}
+		<span><input type="checkbox" name="car"></span>		
+	{% endif %}
+	Nome: {{ produto.descricao }} - Preço {{ produto.preco }}</p>
+	{% if produto.ttamanho %}
+		<p>Tamanho: </p>
+		<select id="id_tamanho" name="tamanho">
+		{% for p in produto.TAMANHOS %}
+			<option value="1">{{ p }}</option>
+		{% endfor %}
+		</select>
+	{% endif %}
+	{% if produto.ttipo %}
+		<p>Tipos: </p>
+		<select id="id_tipo" name="tipo">
+		{% for p in produto.CTIPOS %}
+			<option value="1">{{ p }}</option>
+		{% endfor %}
+		</select>
+	{% endif %}
+	
+	<p>-----------------------------------------------</p>
+	<br>
+{% empty %}
+	<p>Sem produtos cadastrados</p>
+{% endfor %}
+
+</body>
+</html>
