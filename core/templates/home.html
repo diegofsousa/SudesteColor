@@ -1,30 +1,45 @@
+{% load staticfiles %}
+{% load aux_tags %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>SudesteColor</title>
+	<script type="text/javascript">
+		var array = [];
+		{% for produto in produtos %}
+			array.push({{ produto.pk }});
+		{% endfor %}
+	</script>
 </head>
-<body>
+<body onload="atualiza()">
 {% for produto in produtos %}
 	
 	<p>
 	{% if produto.aberto %}
-		<span><input type="checkbox" name="car"></span>		
+		<span><input onchange="atualiza()" type="checkbox" id="cb{{ produto.pk }}"></span>		
 	{% endif %}
 	{{ produto.descricao }} -
-	<select id="id_tipo{{ produto.pk }}" name="tipo">
+	<select id="id_tipo{{ produto.pk }}" name="tipo" onchange="atualiza()">
 	{% for p in produto.get_precos %}
-		<option value="{{ p.pk }}">{{ p.descricao }}</option>
+		<option value="{{ p.preco }}">{{ p.descricao }} - <span id="p-{{ p.pk }}">{{ p.preco }}</span></option>
 	{% endfor %}
 	</select>
 	{% if produto.minimo_permitido %}
-		- Quantidade: 
-		<input id="id_preco{{ produto.pk }}" name="preco" step="any" type="number" value="{{ produto.minimo_permitido }}" required />
+		- Quantidade:
+		<select id="id_preco{{ produto.pk }}" name="preco" onchange="atualiza()">
+		{% for p in produto.pk|listq %}
+			<option value="{{ p }}">{{ p }}</span></option>
+		{% endfor %}
+		</select>
 	{% endif %}
+	 - Total: <span id="total{{ produto.pk }}"></span>
 	</p>	
 	<p>-----------------------------------------------</p>
 {% empty %}
 	<p>Sem produtos cadastrados</p>
 {% endfor %}
-
+<p>TOTAL: R$ <span id="precoTotal"></span></p>
+<script language="javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script language="javascript" src="{% static 'js/funcional.js' %}"></script>
 </body>
 </html>

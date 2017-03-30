@@ -6,6 +6,7 @@ class Produto(models.Model):
 	descricao = models.CharField(max_length=100, blank=False, verbose_name='Descrição')
 	aberto = models.BooleanField(default=False, verbose_name='Aberto')
 	minimo_permitido = models.IntegerField(default=3, verbose_name='Minimo de unidades permitidas para compra', blank=True, null=True)
+	maximo_permitido = models.IntegerField(default=50, verbose_name='Máximo de unidades permitidas para compra', blank=True, null=True)
 
 	def __str__(self):
 		return self.descricao
