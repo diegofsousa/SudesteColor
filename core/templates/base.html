@@ -1,0 +1,65 @@
+{% load staticfiles %}
+{% load aux_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block titulo %}
+        <title>SudesteColor</title>
+    {% endblock titulo %}	
+	<meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
+	<script type="text/javascript">
+		var array = [];
+		{% for produto in produtos %}
+			array.push({{ produto.pk }});
+		{% endfor %}
+	</script>
+</head>
+<body onload="atualiza()" class="teal lighten-5">
+
+<ul id="dropdown1" class="dropdown-content left">
+    <li><a href="/logout/">Sair</a></li>
+    <li class="divider"></li>
+    <li><a href="#modalExcluir">Excluir conta</a></li>
+</ul>
+<div class="navbar-fixed">
+<nav class="red">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo">SudesteColor</a>
+      <a href="#" data-activates="menu-mobile" class="button-collapse left"><i class="material-icons left">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#!"><i class="material-icons left">home</i>Página inicial</a></li>
+        <li><a href="#!"><i class="material-icons left">info</i>Sobre</a></li>
+        <li><a href="#!"><i class="material-icons left">perm_contact_calendar</i>Contato</a></li>
+      </ul>
+      <ul id="menu-mobile" class="side-nav">
+        <li><a href="#!"><i class="material-icons left">home</i>Página inicial</a></li>
+        <li><a href="#!"><i class="material-icons left">info</i>Sobre</a></li>
+        <li><a href="#!"><i class="material-icons left">perm_contact_calendar</i>Contato</a></li>
+      </ul>
+
+    </div>
+</nav>  
+</div>
+
+{% block conteudo %}
+{% endblock conteudo %}
+<script language="javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script language="javascript" src="{% static 'js/materialize.min.js' %}"></script>
+<script language="javascript" src="{% static 'js/funcional.js' %}"></script>
+<script type="text/javascript">
+    $(".button-collapse").sideNav();
+    $(".dropdown-button").dropdown({ hover: false });
+    $('.modal').modal();
+    $(document).ready(function(){
+      $('.slider').slider();
+      $('.slider').height(500);
+    });
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+</script>
+</body>
+</html>

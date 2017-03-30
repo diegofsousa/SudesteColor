@@ -1,45 +1,205 @@
+{% extends "base.html" %}
 {% load staticfiles %}
 {% load aux_tags %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>SudesteColor</title>
-	<script type="text/javascript">
-		var array = [];
-		{% for produto in produtos %}
-			array.push({{ produto.pk }});
-		{% endfor %}
-	</script>
-</head>
-<body onload="atualiza()">
-{% for produto in produtos %}
+
+{% block titulo %}
+	<title>SudesteColor - Home</title>
+{% endblock titulo %}
+{% block conteudo %}
+<div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="{% static 'img/slide/2.jpg' %}"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>Somos a SudesteColor</h3>
+          <h5 class="light grey-text text-lighten-3">Registre os momentos mais importantes da sua vida</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'img/slide/1.jpg' %}"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>Formaturas</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'img/slide/3.jpg' %}"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'img/slide/5.jpg' %}"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+ <div class="row">
+    <div class="col s12">
+      <div class="card teal lighten-4">
+        <div class="card-content black-text">
+          <span class="card-title">O que somos</span>
+          <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+
+		</p>
+		<p>
+			"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+		</p>
+
+		<ol>
+			<li>maxime placeat facere possimus</li>
+			<li>maxime placeat facere possimus</li>
+			<li>maxime placeat facere possimus</li>
+		</ol>
+
+		<span class="card-title">O que cobrimos</span>
+		<div class="row">
+        	<div class="col s6 m6 l3">
+	          <div class="card">
+	            <div class="card-image">
+	              <img src="{% static 'img/slide/9.jpg' %}">
+	              <span class="card-title">Casamentos</span>
+	            </div>
+	            <div class="card-content">
+	              <p>I am a very simple card. I am good at containing small bits of information.
+	              I am convenient because I require little markup to use effectively.</p>
+	            </div>
+	            <div class="card-action">
+	              <a href="#">This is a link</a>
+	            </div>
+	          </div>
+	         </div>
+	         <div class="col s6 m6 l3">
+	          <div class="card">
+	            <div class="card-image">
+	              <img src="{% static 'img/slide/9.jpg' %}">
+	              <span class="card-title">Formaturas</span>
+	            </div>
+	            <div class="card-content">
+	              <p>I am a very simple card. I am good at containing small bits of information.
+	              I am convenient because I require little markup to use effectively.</p>
+	            </div>
+	            <div class="card-action">
+	              <a href="#">This is a link</a>
+	            </div>
+	          </div>
+	          </div>
+	          <div class="col s6 m6 l3">
+	          <div class="card">
+	            <div class="card-image">
+	              <img src="{% static 'img/slide/9.jpg' %}">
+	              <span class="card-title">Eventos</span>
+	            </div>
+	            <div class="card-content">
+	              <p>I am a very simple card. I am good at containing small bits of information.
+	              I am convenient because I require little markup to use effectively.</p>
+	            </div>
+	            <div class="card-action">
+	              <a href="#">This is a link</a>
+	            </div>
+	          </div>
+	          </div>
+	          <div class="col s6 m6 l3">
+	          <div class="card">
+	            <div class="card-image">
+	              <img src="{% static 'img/slide/9.jpg' %}">
+	              <span class="card-title">Shows</span>
+	            </div>
+	            <div class="card-content">
+	              <p>I am a very simple card. I am good at containing small bits of information.
+	              I am convenient because I require little markup to use effectively.</p>
+	            </div>
+	            <div class="card-action">
+	              <a href="#">This is a link</a>
+	            </div>
+	          </div>
+	          </div>
+	        </div>
+	      </div>
+        </div>
+        <div class="card teal lighten-4">
+	        <div class="card-content black-text">
+	          	<span class="card-title">Simulação de orçamento</span>
+	          	<p>
+	          		On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best.
+	          	</p>
+	          	<ul class="collection">
+	          	{% for produto in produtos %}
+					
+					<li class="collection-item">
+					<div class="row">
+						<div class="col s3 m2 offset-m1">
+							{% if produto.aberto %}
+								<input onchange="atualiza()" type="checkbox" id="cb{{ produto.pk }}" class="filled-in">
+								<label for="cb{{ produto.pk }}">{{ produto.descricao }}</label>
+								
+							{% else %}
+								<input onchange="atualiza()" type="checkbox" id="cb{{ produto.pk }}" class="filled-in" checked="checked" disabled="disabled">
+								<label for="cb{{ produto.pk }}">{{ produto.descricao }}</label>
+								
+							{% endif %}
+						</div>
+						<div class="col s3 input-fields">
+							<select id="id_tipo{{ produto.pk }}" name="tipo" onchange="atualiza()">
+							{% for p in produto.get_precos %}
+								<option value="{{ p.preco }}">{{ p.descricao }} - <span id="p-{{ p.pk }}">{{ p.preco }}</span></option>
+							{% endfor %}
+							</select>
+						</div>
+						{% if produto.minimo_permitido %}
+						<div class="col s3 input-fields">
+							<select id="id_preco{{ produto.pk }}" name="preco" onchange="atualiza()">
+							{% for p in produto.pk|listq %}
+								<option value="{{ p }}">{{ p }}</option>
+							{% endfor %}
+							</select>
+						</div>
+						
+						{% endif %}
+						<div class="col s3">
+							Total: <span id="total{{ produto.pk }}"></span>
+						</div>
+					</div>
+					</li> 
+				{% empty %}
+					<p>Sem produtos cadastrados</p>
+				{% endfor %}
+				</ul>
+				<div class="row">
+			      <div class="col s12">
+			        <div class="card-panel teal center-align">
+			          <span class="white-text">
+			          Preço total do orçamento: <b>R$ <span id="precoTotal"></span></b>
+			          </span>
+			        </div>
+			      </div>
+			    </div>
+				
+	        </div>
+        </div>
+        <div class="card teal lighten-4">
+	        <div class="card-content black-text">
+	          	<span class="card-title">Contate-nos</span>
+	          	<div class="col s6">
+	          		<div class="card red lighten-2">
+	          			<div class="card-content white-text">
+	          			</div>
+	          		</div>
+	          	</div>
+	          	<div class="col s6">
+	          		<div class="card red lighten-2">
+	          			<div class="card-content white-text">
+	          			</div>
+	          		</div>
+	          	</div>
+	        </div>
+	    </div>
+      </div>
+    </div>
+  </div>
 	
-	<p>
-	{% if produto.aberto %}
-		<span><input onchange="atualiza()" type="checkbox" id="cb{{ produto.pk }}"></span>		
-	{% endif %}
-	{{ produto.descricao }} -
-	<select id="id_tipo{{ produto.pk }}" name="tipo" onchange="atualiza()">
-	{% for p in produto.get_precos %}
-		<option value="{{ p.preco }}">{{ p.descricao }} - <span id="p-{{ p.pk }}">{{ p.preco }}</span></option>
-	{% endfor %}
-	</select>
-	{% if produto.minimo_permitido %}
-		- Quantidade:
-		<select id="id_preco{{ produto.pk }}" name="preco" onchange="atualiza()">
-		{% for p in produto.pk|listq %}
-			<option value="{{ p }}">{{ p }}</span></option>
-		{% endfor %}
-		</select>
-	{% endif %}
-	 - Total: <span id="total{{ produto.pk }}"></span>
-	</p>	
-	<p>-----------------------------------------------</p>
-{% empty %}
-	<p>Sem produtos cadastrados</p>
-{% endfor %}
-<p>TOTAL: R$ <span id="precoTotal"></span></p>
-<script language="javascript" src="{% static 'js/jquery.min.js' %}"></script>
-<script language="javascript" src="{% static 'js/funcional.js' %}"></script>
-</body>
-</html>
+{% endblock conteudo %}
