@@ -24,3 +24,12 @@ class Preco(models.Model):
 
 	def __str__(self):
 		return self.descricao + ' em '+ self.produto.descricao
+
+class Slide(models.Model):
+	titulo = models.CharField(max_length=100, blank=False, verbose_name='Título')
+	subtitulo = models.CharField(max_length=100, blank=False, verbose_name='Subtítulo')
+	imagem = models.ImageField(blank=False, null=False)
+	lado_legenda = models.BooleanField(default=False, verbose_name='Legenda: True para à esquesda e False para à direita')
+
+	def __str__(self):
+		return self.titulo

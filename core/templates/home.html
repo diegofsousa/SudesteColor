@@ -2,59 +2,45 @@
 {% load staticfiles %}
 {% load aux_tags %}
 
-{% block titulo %}
-	<title>SudesteColor - Home</title>
-{% endblock titulo %}
+
 {% block conteudo %}
+<div id="home"></div>
 <div class="slider">
     <ul class="slides">
+    {% for img in slide %}
       <li>
-        <img src="{% static 'img/slide/2.jpg' %}"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>Somos a SudesteColor</h3>
-          <h5 class="light grey-text text-lighten-3">Registre os momentos mais importantes da sua vida</h5>
+        <img src="{{ img.imagem.url }}"> <!-- random image -->
+        {% if img.lado_legenda %}
+        <div class="caption left-align white-text">
+          <h3>{{ img.titulo }}</h3>
+          <h5>{{ img.subtitulo }}</h5>
         </div>
-      </li>
-      <li>
-        <img src="{% static 'img/slide/1.jpg' %}"> <!-- random image -->
-        <div class="caption left-align">
-          <h3>Formaturas</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        {% else %}
+        <div class="caption right-align white-text">
+          <h3>{{ img.titulo }}</h3>
+          <h5>{{ img.subtitulo }}</h5>
         </div>
-      </li>
-      <li>
-        <img src="{% static 'img/slide/3.jpg' %}"> <!-- random image -->
-        <div class="caption right-align">
-          <h3>Right Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="{% static 'img/slide/5.jpg' %}"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
+        {% endif %}
+        
+      </li>      
+    {% empty %}
+    	
+    {% endfor %}
+      
     </ul>
   </div>
+  <div id="sobre"></div>
  <div class="row">
     <div class="col s12">
       <div class="card teal lighten-4">
         <div class="card-content black-text">
           <span class="card-title">O que somos</span>
-          <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
-
-		</p>
-		<p>
-			"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
-		</p>
-
-		<ol>
-			<li>maxime placeat facere possimus</li>
-			<li>maxime placeat facere possimus</li>
-			<li>maxime placeat facere possimus</li>
-		</ol>
+          <p>Somos uma empresa com profissionais especializados em cobertura de eventos sociais (formatura casamentos, aniversários...) oferecendo o que há de melhor em fotografia no mercado.
+		  </p>
+		  <div style="height: 50px"></div>
+		  <span class="card-title">Nossa missão</span>
+		  <p>Registrar seus momentos marcantes, fazendo de suas fotos lembranças inesquecíveis com qualidade e preços diferenciados que cabem no seu orçamento.</p>
+		<div style="height: 80px"></div>
 
 		<span class="card-title">O que cobrimos</span>
 		<div class="row">
@@ -120,7 +106,9 @@
 	          </div>
 	        </div>
 	      </div>
+	      <div id="orcamento"></div>
         </div>
+        
         <div class="card teal lighten-4">
 	        <div class="card-content black-text">
 	          	<span class="card-title">Simulação de orçamento</span>
@@ -173,7 +161,35 @@
 			      <div class="col s12">
 			        <div class="card-panel teal center-align">
 			          <span class="white-text">
-			          Preço total do orçamento: <b>R$ <span id="precoTotal"></span></b>
+			          	<div class="row">
+			          		<div class="col s12 m3 offset-m1">
+			          		Preço total do orçamento: <br><b>R$ <span id="precoTotal"></span></b>
+				          	</div>
+				          	<div class="col s12 m2">
+				          		Parcelamento: 
+				          	</div>
+				          	<div class="col s12 m1 input-fields">
+				          		<select id="parc" name="tipo" onchange="cparc()">
+									<option value="1">1x</option>
+									<option value="2">2x</option>
+									<option value="3">3x</option>
+									<option value="4">4x</option>
+									<option value="5">5x</option>
+									<option value="6">6x</option>
+									<option value="7">7x</option>
+									<option value="8">8x</option>
+									<option value="9">9x</option>
+									<option value="10">10x</option>
+									<option value="11">11x</option>
+									<option value="12">12x</option>
+								</select>
+				          	</div>
+				          	<div class="col s12 m3">
+				          		<span>
+				          			<b><span id="nparc"></span></b> parcela(s) de <br>R$ <b><span id="din"></span></b>.
+				          		</span>
+				          	</div>
+			          	</div>
 			          </span>
 			        </div>
 			      </div>
@@ -181,25 +197,60 @@
 				
 	        </div>
         </div>
-        <div class="card teal lighten-4">
+       	   <div id="contatenos"></div>
+	      <div class="card teal lighten-4">
 	        <div class="card-content black-text">
-	          	<span class="card-title">Contate-nos</span>
-	          	<div class="col s6">
-	          		<div class="card red lighten-2">
-	          			<div class="card-content white-text">
+	          <span class="card-title">Contate-nos</span>
+	          <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best.</p>
+	          	<div class="row">
+	          		<div class="col s12 m12 l6">
+	          			<div class="card teal">
+	          				<div class="card-content black-text">
+	          					<span class="card-title">Formulário</span>
+	          					<div class="row">
+							    <form class="col s12" id="formm" method="post">
+							    {% csrf_token %}
+							      <div class="row">
+							        <div class="input-field col s12">
+							          <input placeholder="Ex.: Maria" id="first_name" type="text" class="validate" required>
+							          <label for="first_name">Nome</label>
+							        </div>
+							        <div class="input-field col s12">
+							          <input placeholder="Ex.: maria@email.com" id="email" type="email" class="validate" required>
+							          <label for="email">Email</label>
+							        </div>
+							        <div class="input-field col s12">
+							          <textarea id="mensagem" class="materialize-textarea" placeholder="Seu texto..." required></textarea>
+							          <label for="mensagem">Mensagem</label>
+							        </div>
+							        <div class="right-align">
+							        	<button class="waves-effect waves-light btn red lighten-1"><i class="material-icons left">send</i>Enviar</button>
+							        </div>							        
+							      </div>
+							     </form>
+							     </div>
+	          				</div>
 	          			</div>
 	          		</div>
-	          	</div>
-	          	<div class="col s6">
-	          		<div class="card red lighten-2">
-	          			<div class="card-content white-text">
+	          		<div class="col s12 m12 l6">
+	          			<div class="card teal">
+	          				<div class="card-content black-text">
+		          				
+	          					<span class="card-title">Onde estamos</span>
+	          					<div class="cont">
+		          					<div id="map_container"></div>
+	  								<div id="map" style="min-height: 319.567px;"></div>
+		          				</div>
+	          					
+	          				</div>
 	          			</div>
 	          		</div>
-	          	</div>
-	        </div>
-	    </div>
+	        	</div>
+	       </div>
+	   
       </div>
     </div>
+
   </div>
 	
 {% endblock conteudo %}

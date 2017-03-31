@@ -21,3 +21,64 @@
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+
+
+.input-field label {
+ color: #2F4F4F;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+ color: #000;
+}
+
+.input-field input[type=email]:focus + label {
+ color: #000;
+}
+
+textarea#textarea1:focus + label {
+ color: #000;
+}
+
+.cont{
+  width: 100%;
+  margin: 0 auto;
+  margin-top:50px;
+}
+
+#map_container{
+  position: relative;
+}
+#map{
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 22.25%;
+    padding-top: 30px;
+    position: relative;
+}
+
+.img-topo{
+  margin-left: 120px;
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .img-topo {margin-left: 0; margin-top: 0;}
+}
+
+.men{
+  list-style: none;
+}
+
+.men li{
+  display: inline;
+}
+
+.slider {
+height: 100vh;
+top: -74px;
+}
+
+.slider .indicators {
+z-index: 9999;
+bottom: 30px;
+}

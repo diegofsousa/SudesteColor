@@ -3,9 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% block titulo %}
-        <title>SudesteColor</title>
-    {% endblock titulo %}	
+
+  <title>Sudeste Color</title>
 	<meta charset="utf-8" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
@@ -19,25 +18,24 @@
 </head>
 <body onload="atualiza()" class="teal lighten-5">
 
-<ul id="dropdown1" class="dropdown-content left">
-    <li><a href="/logout/">Sair</a></li>
-    <li class="divider"></li>
-    <li><a href="#modalExcluir">Excluir conta</a></li>
-</ul>
 <div class="navbar-fixed">
 <nav class="red">
-    <div class="nav-wrapper container">
-      <a href="#" class="brand-logo">SudesteColor</a>
+    <div class="nav-wrapper">
+      <a href="#home" class="brand-logo scroll">
+      <img class="img-topo responsive-img" src="{% static 'img/llp.png' %}" alt="imgtopo">
+      </a>
       <a href="#" data-activates="menu-mobile" class="button-collapse left"><i class="material-icons left">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#!"><i class="material-icons left">home</i>Página inicial</a></li>
-        <li><a href="#!"><i class="material-icons left">info</i>Sobre</a></li>
-        <li><a href="#!"><i class="material-icons left">perm_contact_calendar</i>Contato</a></li>
+        <li><a href="#home" class="scroll"><i class="material-icons left">home</i>Página inicial</a></li>
+        <li><a href="#sobre" class="scroll"><i class="material-icons left">info</i>Sobre</a></li>
+        <li><a href="#orcamento" class="scroll"><i class="material-icons left">monetization_on</i>Orçamento</a></li>
+        <li><a href="#contatenos" class="scroll"><i class="material-icons left">perm_contact_calendar</i>Contato</a></li>
       </ul>
       <ul id="menu-mobile" class="side-nav">
-        <li><a href="#!"><i class="material-icons left">home</i>Página inicial</a></li>
-        <li><a href="#!"><i class="material-icons left">info</i>Sobre</a></li>
-        <li><a href="#!"><i class="material-icons left">perm_contact_calendar</i>Contato</a></li>
+       <li><a href="#home" class="scroll"><i class="material-icons left">home</i>Página inicial</a></li>
+        <li><a href="#sobre" class="scroll"><i class="material-icons left">info</i>Sobre</a></li>
+        <li><a href="#orcamento" class="scroll"><i class="material-icons left">monetization_on</i>Orçamento</a></li>
+        <li><a href="#contatenos" class="scroll"><i class="material-icons left">perm_contact_calendar</i>Contato</a></li>
       </ul>
 
     </div>
@@ -46,20 +44,65 @@
 
 {% block conteudo %}
 {% endblock conteudo %}
+<footer class="page-footer teal darken-4">
+<div class="container">
+<div class="row">
+  <div class="col l6 s12">
+    <img class="responsive-img" src="{% static 'img/llg.png' %}">
+    <p class="grey-text text-lighten-4">Rua Francisco Antunes de Macedo, <br>Bairro Santa Fé, São Raimundo Nonato - PI <br>Cep 64770-000 <br>Telefone: (89) 3582-3699 <br>Email: <a href="mailto:sudestecolor@hotmail.com">sudestecolor@hotmail.com</a></p>
+    <h5 class="white-text">Links</h5>
+    <ul class="men">
+      <li><a class="grey-text text-lighten-3" href="#!">Topo - </a></li>
+      <li><a class="grey-text text-lighten-3" href="#!">Sobre - </a></li>
+      <li><a class="grey-text text-lighten-3" href="#!">Orçamento - </a></li>
+      <li><a class="grey-text text-lighten-3" href="#!">Contate-nos</a></li>
+    </ul>
+  </div>
+  <div class="col l4 offset-l2 s12">
+    <div class="fb-page" style="width: 430px;" 
+  data-tabs="timeline"
+  data-href="https://www.facebook.com/sudestecolor"
+  data-width="380" data-height="270"></div>
+  </div>
+</div>
+</div>
+<div class="footer-copyright">
+<div class="container">
+© {{ ano }} Todos os direitos reservados
+<a class="grey-text text-lighten-4 right" target="_blank" href="https://www.facebook.com/difernandosl">por Diego Fernando</a>
+</div>
+</div>
+</footer>
+
+
 <script language="javascript" src="{% static 'js/jquery.min.js' %}"></script>
 <script language="javascript" src="{% static 'js/materialize.min.js' %}"></script>
+<script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script language="javascript" src="{% static 'js/funcional.js' %}"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <script type="text/javascript">
-    $(".button-collapse").sideNav();
-    $(".dropdown-button").dropdown({ hover: false });
-    $('.modal').modal();
+    
     $(document).ready(function(){
-      $('.slider').slider();
-      $('.slider').height(500);
-    });
-    $(document).ready(function() {
+      $(".button-collapse").sideNav();
+      $('.modal').modal();
+
       $('select').material_select();
+      //$('#sidenav-overlay').removeAttr('position');
+      //$('.slider').slider({});
+      $('.slider').slider({
+      height: '100%'
+      });
+    
     });
+    
 </script>
 </body>
 </html>
