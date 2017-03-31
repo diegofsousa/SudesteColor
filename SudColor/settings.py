@@ -74,6 +74,7 @@ WSGI_APPLICATION = 'SudColor.wsgi.application'
 try:
     from .aws_pass import *
 except Exception as e:
+    print("Não foi possivel importar módulos S3")
     pass
 
 
