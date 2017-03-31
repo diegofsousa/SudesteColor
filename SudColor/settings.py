@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_!5q=5s-fvo_s$y$hiae_r7w+-1el0u2obzxp!!+t1@^pbz!s-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -116,7 +116,7 @@ except Exception:
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 
@@ -133,3 +133,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media/'
+
+# Heroku settings for deploy
+import dj_database_url
+DATABASES = {
+    'default': dj_database_url.config()
+    }
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
+
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'core/static/'),
+)
